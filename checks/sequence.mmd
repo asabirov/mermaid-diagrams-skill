@@ -1,0 +1,17 @@
+sequenceDiagram
+  accTitle: Recovering a timed out job
+  accDescr: The worker reports a timeout. The caller retries with the same job identifier.
+  participant Caller
+  participant API
+  participant Worker
+  Caller->>API: Submit job with stable ID
+  API->>Worker: Run job
+  alt completes before deadline
+    Worker-->>API: Result
+    API-->>Caller: Succeeded
+  else timeout
+    Worker-->>API: Timeout
+    API-->>Caller: Failed, retry available
+    Caller->>API: Retry same job ID
+    API->>Worker: Retry job
+  end
