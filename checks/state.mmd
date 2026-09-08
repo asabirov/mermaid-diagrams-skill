@@ -1,0 +1,9 @@
+stateDiagram-v2
+  accTitle: Job lifecycle
+  accDescr: A queued job runs, succeeds or fails, and a failed job can be retried.
+  [*] --> Queued
+  Queued --> Running: worker accepts
+  Running --> Succeeded: result saved
+  Running --> Failed: timeout
+  Failed --> Queued: retry requested
+  Succeeded --> [*]
