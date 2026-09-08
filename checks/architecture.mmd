@@ -1,0 +1,12 @@
+flowchart TB
+  accTitle: Background job architecture
+  accDescr: The browser submits work through an API. A worker reads a queue and stores results.
+  Browser -->|submit job| API
+  subgraph Service[Job service]
+    API -->|enqueue| Queue
+    Queue -->|job| Worker
+    Worker -->|save result| Database[(Database)]
+    API -->|read result| Database
+  end
+  classDef focus fill:#eff6ff,stroke:#2563eb,color:#172033
+  class Worker focus
