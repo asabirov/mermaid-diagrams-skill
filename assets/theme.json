@@ -19,8 +19,11 @@
     "edgeLabelBackground": "#ffffff",
     "noteBkgColor": "#eff6ff",
     "noteTextColor": "#172033",
-    "noteBorderColor": "#2563eb"
+    "noteBorderColor": "#2563eb",
+    "activationBkgColor": "#f8fafc",
+    "activationBorderColor": "#64748b"
   },
-  "flowchart": { "htmlLabels": false },
-  "sequence": { "useMaxWidth": true }
+  "flowchart": {
+    "htmlLabels": false
+  }
 }
