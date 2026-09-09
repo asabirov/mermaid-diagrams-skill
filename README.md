@@ -1,27 +1,30 @@
 # Mermaid diagrams
 
-A lean agent skill for readable architecture, state, logic, and sequence diagrams. It supplies a shared theme and a source-plus-image delivery contract. It does not depend on another skill.
+An independent agent skill for readable architecture, states, conditional logic, interactions and customer journeys. It contains personal presentation preferences, light/dark themes and five rendering examples. It does not build review pages or depend on another skill.
 
-Ask: “Show the job lifecycle and retry behavior for review.” The agent chooses the view, applies the theme, and inspects the rendered result. Rendering needs an available Mermaid renderer; the CLI example needs [Mermaid CLI](https://github.com/mermaid-js/mermaid-cli), Node.js, and its browser. No dependency installation or network access occurs from this package itself. Theme options follow [Mermaid's configuration](https://mermaid.js.org/config/theming.html).
+Ask: “Show the customer’s review journey, including interruptions.” The agent chooses a diagram, renders both themes and checks the actual presentation. Rendering requires an available Mermaid renderer; these commands use [Mermaid CLI](https://github.com/mermaid-js/mermaid-cli), Node.js and its browser. No fonts are bundled: Geist is used when installed, otherwise Arial/sans-serif. Theme configuration follows [Mermaid’s documentation](https://mermaid.js.org/config/theming.html).
 
 ## Install and maintain
 
-Clone this repository into a skill directory named `mermaid-diagrams` in your agent's supported skills location, then check out a reviewed full commit SHA. For a configuration repository, add it as a submodule at `skills/mermaid-diagrams` and commit the reviewed pin through a PR. Restart the agent and confirm `mermaid-diagrams` is listed; request a sample render to verify tooling.
+Clone into a skill directory named `mermaid-diagrams` in the agent’s supported skills location and check out a reviewed full commit SHA. Configuration repositories consume a pinned submodule at `skills/mermaid-diagrams`. Restart the agent, confirm discovery and request a sample render.
 
-Before updating, record the installed SHA. Fetch and check out the new reviewed SHA, verify a sample render, and commit the changed submodule pin where applicable. Roll back by restoring the previous SHA. Remove the installation or submodule to uninstall. Generated output belongs in your task's artifact directory, outside this package.
+Record the old SHA before updating. Fetch the reviewed revision, verify a render and commit the changed configuration pin through a PR. Restore the old SHA to roll back; remove the clone or submodule to uninstall. Generated output belongs outside the package.
 
 ## Verify a change
 
-Run the synthetic fixtures from the repository root (outputs stay outside the package):
+The supplied configurations target Mermaid CLI 11.16.0. Recheck appearance when changing renderer versions; successful parsing does not establish visual compatibility. Run from the repository root:
 
 ```sh
 mermaid_output=$(mktemp -d)
-for diagram in state sequence architecture; do
-  mmdc -i "checks/$diagram.mmd" -o "$mermaid_output/$diagram.svg" -c assets/theme.json -b white
-  mmdc -i "checks/$diagram.mmd" -o "$mermaid_output/$diagram.png" -c assets/theme.json -b white
+mmdc --version
+for diagram in state sequence architecture logic journey; do
+  for mode in light dark; do
+    mmdc -i "checks/$diagram.mmd" -o "$mermaid_output/$diagram-$mode.svg" \
+      -c "assets/$mode.json" -b transparent
+  done
 done
 ```
 
-The fixtures cover retry states, timeout sequence branches, and an architecture boundary with focused worker. Preserve `.mmd` source and inspect SVG or PNG for label clipping, crossings, consistent fonts, contrast, and readability at review size. Record renderer version and results in the GitHub issue or PR.
+Fixtures cover review states, clipboard success/failure, delivery architecture, conditional visual selection and an interrupted customer journey. Render without per-source colour overrides or manual SVG patches. Inspect branch labels, class fills, connectors, accessibility titles/descriptions and text at desktop and iPad sizes against matching light/dark page backgrounds. The themes use opaque label backgrounds and a text halo to clear connectors. Presentation behavior belongs to the host: verify native dimensions, theme switching and keyboard/touch viewing there.
 
-Compare an agent's response to the same diagram request with and without the skill: check diagram choice, shared appearance, editable source, rendered inspection, and honest verification limits. Also ask a nearby non-trigger, such as “Correct this sentence's punctuation”; it should not create a diagram. These are behavioral checks, not guarantees across every model or renderer.
+Compare the same review request against the prior skill: check view choice, editable sources, appearance, useful controls and honest verification limits. Include a nearby non-trigger such as a punctuation correction; it should not produce a diagram. Record inspected outputs, renderer version and limitations in the task’s GitHub record. These checks do not guarantee every host or model behaves identically.
