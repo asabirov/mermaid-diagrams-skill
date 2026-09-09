@@ -1,43 +1,42 @@
 ---
 name: mermaid-diagrams
-description: Use when preparing Mermaid diagrams for architecture, states, conditional logic, or interactions that a human needs to review. Not for screenshots, UI prototypes, or simple facts clearer in prose.
+description: Use when preparing Mermaid diagrams for architecture, states, conditional logic, interactions, or customer journeys that a human needs to review. Not for screenshots, UI prototypes, or simple facts clearer in prose.
 ---
 
 # Mermaid diagrams
 
-Make the decision readable at the size the reviewer will see. Deliver editable `.mmd` source, a rendered SVG or PNG, and a short explanation of what the diagram establishes and what remains uncertain.
+Explain one question at a readable size. Keep editable `.mmd` source and verified renders in the task’s artifacts, outside the installed skill.
 
 ## Choose the view
 
 | Question | View |
 | --- | --- |
-| What connects, and where are the boundaries? | `flowchart` with named subgraphs |
-| Which states and transitions are possible? | `stateDiagram-v2` |
-| Who sends what, in what order? | `sequenceDiagram` |
-| Which conditions lead to which outcomes? | `flowchart`, or a decision table if clearer |
+| What connects, and where are the boundaries? | Flowchart with named subgraphs |
+| Which states and transitions are possible? | State diagram |
+| Who sends what, in what order? | Sequence diagram |
+| Which conditions lead to which outcomes? | Flowchart, or a decision table if clearer |
+| What does the customer do, including interruptions? | Unscored flowchart; native journey only with supplied scores |
 
-Use one question per diagram. Label relevant conditions, messages, and data movement. Separate an overview from details instead of shrinking a dense graph. Distinguish proposed behavior from observed behavior in the caption. Preserve decision IDs when comparing alternatives.
+Label conditions and meaningful transitions. Keep decision IDs stable across alternatives. Explain proposed versus observed behavior and material uncertainty briefly; omit captions that merely repeat the diagram. Never invent journey scores or treat a timeout as proof that work stopped.
 
-## Shared style
+## Appearance
 
-Load [assets/theme.json](assets/theme.json) when rendering. It defines Arial with sans-serif fallback, 16px text, white/gray surfaces, dark text and lines, and one blue accent. These are proposed defaults, not evidence of an approved personal preference.
+Use [assets/light.json](assets/light.json) and [assets/dark.json](assets/dark.json). They share 16px Geist/Arial typography, quiet surfaces and neutral connectors. Colour has a semantic role: blue `decision`, teal `result`; ordinary nodes stay neutral. Assign classes with `class NODE_ID decision` or `class NODE_ID result`. Sequence participants use blue surfaces. Keep colours in the theme files, not repeated `classDef` values. Name outcomes explicitly; colour alone is insufficient.
 
-Keep ordinary elements neutral. Reserve blue for the subject under discussion, using an explicit label as well as color. For a flowchart or state node, use:
+Use soft fills without decorative node outlines. Keep branch labels off connectors with an opaque background and breathing room; inspect both themes. Avoid numbered sections, redundant metadata, divider lines, nested borders and disclosure blocks around diagrams.
 
-```mermaid
-classDef focus fill:#eff6ff,stroke:#2563eb,color:#172033
-```
+## Review presentation
 
-Apply `class NODE_ID focus` only where the renderer supports it. In sequence diagrams, use labeled notes or blocks to identify focus. Success, failure, and uncertainty must be named; color alone carries no meaning. Include `accTitle` and `accDescr`, plus a readable caption alongside the image.
+Render transparently. Match the page’s system light/dark theme and its visible theme switch; do not introduce a select menu. Preserve each SVG’s native dimensions: scale down only while labels remain readable, never stretch to fill a page or viewer. Split dense diagrams or allow local scrolling instead of shrinking their text.
 
-## Render and inspect
+When a larger view helps, make the diagram itself tappable and keyboard operable. Use a meaningful viewer title, a compact close button, Escape to close and return focus. Keep focus visible. Do not add Expand diagram, View source or Download source controls; retain source files in artifacts without exposing implementation controls in the review. Give the artifact a concise human title with clear typographic hierarchy, not an internal key or generic report heading.
 
-External dependency: an available Mermaid renderer supporting the selected syntax and configuration; Mermaid CLI (`mmdc`) also requires Node.js and a working browser. Use its existing installation or declared project tooling. Resolve the skill path before running this example:
+## Render and verify
+
+External dependency: Mermaid CLI (`mmdc`), Node.js and its working browser, or an equivalent renderer. Use existing tooling; [README.md](README.md) contains fixture commands and compatibility evidence.
 
 ```sh
-mmdc -i /path/to/diagram.mmd -o /path/to/diagram.svg -c /path/to/mermaid-diagrams/assets/theme.json -b white
+mmdc -i /path/to/diagram.mmd -o /path/to/diagram-light.svg -c /path/to/mermaid-diagrams/assets/light.json -b transparent
 ```
 
-Keep generated files and caches outside the installed skill. Inspect the actual rendered image for clipped labels, confusing crossings, contrast, and readable text at its intended display size; fix and rerender. Retain the source and report the renderer version with verification evidence. If rendering is unavailable, deliver source explicitly marked unverified.
-
-Hosts may ignore custom themes in Markdown fences. Use the verified image when appearance matters and provide a usable link to both image and source. A source parse alone is not visual verification.
+Render the dark variant with `dark.json`. Include `accTitle` and `accDescr`; provide meaningful image alt text in the host. Inspect both themes at the intended desktop and iPad sizes for clipping, collisions, branch-label gaps and contrast. Test any viewer by touch/click and keyboard. Retain renderer version and evidence with the task. Source parsing alone is not visual verification; mark unrendered work unverified. Markdown hosts may ignore these themes: use verified images when appearance matters.
