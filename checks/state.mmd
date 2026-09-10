@@ -1,9 +1,12 @@
 stateDiagram-v2
-  accTitle: Job lifecycle
-  accDescr: A queued job runs, succeeds or fails, and a failed job can be retried.
-  [*] --> Queued
-  Queued --> Running: worker accepts
-  Running --> Succeeded: result saved
-  Running --> Failed: timeout
-  Failed --> Queued: retry requested
-  Succeeded --> [*]
+accTitle: Review choice lifecycle
+accDescr: Editing creates a draft. Returning feedback records a response. A material revision requires another review.
+[*] --> Unreviewed
+Unreviewed --> Draft: choose or comment
+Draft --> Returned: return feedback
+Returned --> NeedsReview: material change
+NeedsReview --> Draft: review again
+Returned --> [*]: decision recorded
+
+class Draft decision
+class Returned result

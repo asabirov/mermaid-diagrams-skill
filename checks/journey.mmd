@@ -1,0 +1,13 @@
+flowchart TB
+accTitle: Reviewing a plan on iPad
+accDescr: Open the review, read its context, inspect relevant evidence, choose an approach and copy feedback. Resume later if interrupted.
+Open[Open review on iPad] --> Read[Read context]
+Read --> Inspect[Inspect evidence]
+Inspect --> Choose[Choose and explain]
+Choose --> Copy[Copy feedback]
+Choose -->|interrupted| Pause[Keep local draft]
+Pause -->|same browser| Choose
+Copy --> Return[Paste into conversation]
+
+class Choose decision
+class Return result
