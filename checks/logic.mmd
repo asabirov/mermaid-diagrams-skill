@@ -1,0 +1,13 @@
+flowchart TB
+accTitle: Choosing evidence for a review
+accDescr: Choose a diagram for logic, matched screenshots for appearance, or a disposable prototype for interaction.
+Question[What needs review?] --> Logic{Logic?}
+Logic -->|Yes| Diagram[Diagram]
+Logic -->|Otherwise| Visual{Appearance?}
+Visual -->|Yes| Screens[Matched screenshots]
+Visual -->|Otherwise| Interaction{Interaction?}
+Interaction -->|Yes| Prototype[Disposable prototype]
+Interaction -->|Otherwise| Prose((Short explanation))
+
+class Logic,Visual,Interaction decision
+class Diagram,Screens,Prototype,Prose result

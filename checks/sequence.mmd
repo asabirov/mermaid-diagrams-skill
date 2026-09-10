@@ -1,17 +1,15 @@
 sequenceDiagram
-  accTitle: Recovering a timed out job
-  accDescr: The worker reports a timeout. The caller retries with the same job identifier.
-  participant Caller
-  participant API
-  participant Worker
-  Caller->>API: Submit job with stable ID
-  API->>Worker: Run job
-  alt completes before deadline
-    Worker-->>API: Result
-    API-->>Caller: Succeeded
-  else timeout
-    Worker-->>API: Timeout
-    API-->>Caller: Failed, retry available
-    Caller->>API: Retry same job ID
-    API->>Worker: Retry job
-  end
+accTitle: Copying feedback with a recovery path
+accDescr: The reviewer asks the page to copy feedback. If clipboard access fails, the page offers a download. No direct agent submission occurs.
+participant Reviewer
+participant Page
+participant Clipboard
+Reviewer->>Page: Copy feedback
+Page->>Clipboard: Write response
+alt Clipboard available
+Clipboard-->>Page: Copied
+Page-->>Reviewer: Paste into conversation
+else Clipboard denied
+Clipboard-->>Page: Denied
+Page-->>Reviewer: Offer download
+end
