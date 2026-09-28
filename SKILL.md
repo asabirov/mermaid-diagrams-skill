@@ -21,7 +21,7 @@ Label conditions and meaningful transitions. Keep decision IDs stable across alt
 
 ## Appearance
 
-Use [assets/light.json](assets/light.json) and [assets/dark.json](assets/dark.json). They share 16px Geist/Arial typography, quiet surfaces and neutral connectors. Colour has a semantic role: blue `decision`, teal `result`; ordinary nodes stay neutral. Assign classes with `class NODE_ID decision` or `class NODE_ID result`. Sequence participants use blue surfaces. Keep colours in the theme files, not repeated `classDef` values. Name outcomes explicitly; colour alone is insufficient.
+Use [assets/light.json](assets/light.json) and [assets/dark.json](assets/dark.json). They share 20px Geist/Arial typography, quiet surfaces and neutral connectors. Colour has a semantic role: blue `decision`, teal `result`; ordinary nodes stay neutral. Assign classes with `class NODE_ID decision` or `class NODE_ID result`. Sequence participants use blue surfaces. Keep colours in the theme files, not repeated `classDef` values. Name outcomes explicitly; colour alone is insufficient.
 
 Use soft fills without decorative node outlines. Keep branch labels off connectors with an opaque background and breathing room; inspect both themes. Avoid numbered sections, redundant metadata, divider lines, nested borders and disclosure blocks around diagrams.
 

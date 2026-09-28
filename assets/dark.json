@@ -1,10 +1,11 @@
 {
   "theme": "base",
+  "fontSize": 20,
   "securityLevel": "strict",
   "themeVariables": {
     "darkMode": true,
     "fontFamily": "Geist, Arial, sans-serif",
-    "fontSize": "16px",
+    "fontSize": "20px",
     "background": "#0a0a0a",
     "primaryColor": "#1a1a1a",
     "primaryTextColor": "#ededed",
