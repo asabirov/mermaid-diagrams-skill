@@ -1,5 +1,6 @@
 {
   "theme": "base",
+  "fontSize": 20,
   "securityLevel": "strict",
   "themeVariables": {
     "darkMode": false,
