@@ -12,4 +12,4 @@ Mermaid diagrams helps you get a readable diagram for architecture, states, cond
 
 - **Reviewable presentation rules.** The skill renders diagrams at their native size, matches the host page's light/dark theme, and, when a larger view helps, makes the diagram tappable and keyboard operable without exposing source or download controls. This keeps the reviewer's focus on the diagram itself.
 
-- **Render-and-verify workflow.** You get `mmdc` commands and fixture diagrams covering states, sequence, architecture, conditional logic and a customer journey, so both themes can be rendered and inspected before the diagram is shared. This catches clipping, collisions and contrast problems before a reviewer sees them.
+- **Render-and-verify workflow.** The skill renders both themes with Mermaid's command-line renderer and inspects them, with five example diagrams to test against, before a diagram is shared. This catches clipping, collisions and contrast problems before a reviewer sees them.
