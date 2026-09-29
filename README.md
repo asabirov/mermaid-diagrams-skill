@@ -8,6 +8,8 @@ Ask: “Show the customer’s review journey, including interruptions.” The ag
 
 Clone into a skill directory named `mermaid-diagrams` in the agent’s supported skills location and check out a reviewed full commit SHA. Configuration repositories consume a pinned submodule at `skills/mermaid-diagrams`. Restart the agent, confirm discovery and request a sample render.
 
+The skill version lives in `metadata.version` in `SKILL.md`.
+
 Record the old SHA before updating. Fetch the reviewed revision, verify a render and commit the changed configuration pin through a PR. Restore the old SHA to roll back; remove the clone or submodule to uninstall. Generated output belongs outside the package.
 
 ## Verify a change
