@@ -31,7 +31,7 @@ Use soft fills without decorative node outlines. Branch labels need an opaque ba
 
 Render with a transparent background. Follow the page’s light or dark theme and its theme switch; do not add a separate theme menu. Keep each SVG at its native size: scale down only while labels stay readable, and never stretch it to fill a page or viewer. Split a dense diagram or let it scroll instead of shrinking its text.
 
-When a larger view helps, make the diagram itself open it by tap, click or keyboard. The viewer has a meaningful title and a small close button; Escape closes it and returns focus. Keep focus visible. Do not add Expand, View source or Download source buttons; keep source files with the task, out of the reviewer’s way. Give the page a short title a person would use, not an internal key or a generic report heading.
+When a larger view helps, make the diagram itself open it by tap, click or keyboard. The viewer has a meaningful title and a small close button; Escape closes it and returns focus. Keep focus visible. Do not add Expand, View source or Download source buttons; keep source files with the task, out of the reviewer’s way. Give the page a short title a person would use, set apart by clear typographic hierarchy, not an internal key or a generic report heading.
 
 ## Render and verify
 
