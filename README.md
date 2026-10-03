@@ -56,7 +56,6 @@ shares verified images.
 | `assets/light.json`, `assets/dark.json` | Mermaid CLI configuration for each theme |
 | `checks/*.mmd` | Five example diagrams about a fictional online shop, one per view, used to check a theme or renderer change |
 | `CHANGELOG.md` | What changed in each release |
-| `.github/workflows/render.yml` | Installs Mermaid CLI 11.16.0 and renders every example in both themes; fails if any SVG is missing |
 
 ## How to run and verify it
 
@@ -92,7 +91,8 @@ state diagram and render both themes.
 
 ### Check a theme or renderer change
 
-From a checkout of this repository, render every example in both themes:
+The checks run locally, not in CI. From a checkout of this repository, render
+every example in both themes:
 
 ```sh
 mermaid_output=$(mktemp -d)
