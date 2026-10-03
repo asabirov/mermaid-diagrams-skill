@@ -31,13 +31,8 @@ What it turned down:
 
 ## The design
 
-| Question | View |
-| --- | --- |
-| What connects, and where are the boundaries? | Flowchart with named subgraphs |
-| Which states and transitions are possible? | State diagram |
-| Who sends what, in what order? | Sequence diagram |
-| Which conditions lead to which outcomes? | Flowchart, or a decision table if clearer |
-| What does the customer do, including interruptions? | Unscored flowchart |
+The skill picks the view by the question the diagram answers; the table is in
+[SKILL.md](SKILL.md).
 
 **Text is 20px.** The themes set 20px text so a diagram stays readable on a
 tablet without zooming.
@@ -61,6 +56,7 @@ shares verified images.
 | `assets/light.json`, `assets/dark.json` | Mermaid CLI configuration for each theme |
 | `checks/*.mmd` | Five example diagrams about a fictional online shop, one per view, used to check a theme or renderer change |
 | `CHANGELOG.md` | What changed in each release |
+| `.github/workflows/render.yml` | Installs Mermaid CLI 11.16.0 and renders every example in both themes; fails if any SVG is missing |
 
 ## How to run and verify it
 
@@ -68,7 +64,7 @@ Install the latest release for Claude Code and Codex with the
 [skills CLI](https://github.com/vercel-labs/skills):
 
 ```sh
-DO_NOT_TRACK=1 npx skills add https://github.com/asabirov/mermaid-diagrams-skill/tree/v0.1.0 --skill mermaid-diagrams --agent claude-code codex --global
+DO_NOT_TRACK=1 npx skills add https://github.com/asabirov/mermaid-diagrams-skill/tree/v0.2.0 --skill mermaid-diagrams --agent claude-code codex --global
 ```
 
 `DO_NOT_TRACK=1` turns off the CLI's telemetry. To update or roll back, run

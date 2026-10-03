@@ -2,7 +2,7 @@
 name: mermaid-diagrams
 description: Use when preparing Mermaid diagrams for architecture, states, conditional logic, interactions, or customer journeys that a human needs to review. Not for screenshots, UI prototypes, or simple facts clearer in prose.
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # Mermaid diagrams
