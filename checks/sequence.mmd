@@ -1,15 +1,15 @@
 sequenceDiagram
-accTitle: Copying feedback with a recovery path
-accDescr: The reviewer asks the page to copy feedback. If clipboard access fails, the page offers a download. No direct agent submission occurs.
-participant Reviewer
-participant Page
-participant Clipboard
-Reviewer->>Page: Copy feedback
-Page->>Clipboard: Write response
-alt Clipboard available
-Clipboard-->>Page: Copied
-Page-->>Reviewer: Paste into conversation
-else Clipboard denied
-Clipboard-->>Page: Denied
-Page-->>Reviewer: Offer download
+accTitle: Card payment with a decline path
+accDescr: The customer pays, the shop asks the payment provider to charge the card. If approved, the shop confirms the order. If declined, the shop asks for another card and keeps the basket.
+participant Customer
+participant Shop
+participant Provider as Payment provider
+Customer->>Shop: Pay for order
+Shop->>Provider: Charge card
+alt Approved
+Provider-->>Shop: Approved
+Shop-->>Customer: Show order confirmation
+else Declined
+Provider-->>Shop: Declined
+Shop-->>Customer: Ask for another card, keep basket
 end
