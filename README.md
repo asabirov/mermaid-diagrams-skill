@@ -1,32 +1,128 @@
-# Mermaid diagrams
+# mermaid-diagrams-skill
 
-An independent agent skill for readable architecture, states, conditional logic, interactions and customer journeys. It contains personal presentation preferences, light/dark themes and five rendering examples. It does not build review pages or depend on another skill.
+Readable Mermaid diagrams with a consistent visual style.
 
-Ask: “Show the customer’s review journey, including interruptions.” The agent chooses a diagram, renders both themes and checks the actual presentation. Rendering requires an available Mermaid renderer; these commands use [Mermaid CLI](https://github.com/mermaid-js/mermaid-cli), Node.js and its browser. No fonts are bundled: Geist is used when installed, otherwise Arial/sans-serif. Theme configuration follows [Mermaid’s documentation](https://mermaid.js.org/config/theming.html).
+This is an agent skill. When someone has to review architecture, states,
+conditional logic, an exchange of messages or a customer journey, the agent
+picks the diagram type that fits the question. It renders the diagram in a
+light and a dark theme, then checks the rendered images before showing them.
 
-## Install and maintain
+## Why it exists, and what it turned down
 
-Clone into a skill directory named `mermaid-diagrams` in the agent’s supported skills location and check out a reviewed full commit SHA. Configuration repositories consume a pinned submodule at `skills/mermaid-diagrams`. Restart the agent, confirm discovery and request a sample render.
+Left alone, an agent tends to draw a flowchart for everything, use Mermaid's
+default styling and call a diagram done once it parses. This skill makes it
+choose the view by the question, render with a shared theme and look at the
+result.
 
-The skill version lives in `metadata.version` in `SKILL.md`.
+What it turned down:
 
-Record the old SHA before updating. Fetch the reviewed revision, verify a render and commit the changed configuration pin through a PR. Restore the old SHA to roll back; remove the clone or submodule to uninstall. Generated output belongs outside the package.
+- **Default Mermaid styling.** Two theme files set the type, surfaces and two
+  meaning-carrying colours, so diagrams look alike across tasks.
+- **Colour defined inside each diagram.** Colours live in the theme files.
+  Diagrams only name a class: `decision` or `result`.
+- **Invented journey scores.** Mermaid's native journey chart needs a score
+  for each step. The skill draws journeys as unscored flowcharts unless real
+  scores are supplied.
+- **Parsing as proof.** A diagram that parses can still clip text or hide a
+  label under a connector. The skill counts only an inspected render as
+  verified.
+- **Review-page building.** The skill makes diagrams. It does not build the
+  page they are reviewed on, and it does not depend on any other skill.
 
-## Verify a change
+## The design
 
-The supplied configurations target Mermaid CLI 11.16.0. Recheck appearance when changing renderer versions; successful parsing does not establish visual compatibility. Run from the repository root:
+| Question | View |
+| --- | --- |
+| What connects, and where are the boundaries? | Flowchart with named subgraphs |
+| Which states and transitions are possible? | State diagram |
+| Who sends what, in what order? | Sequence diagram |
+| Which conditions lead to which outcomes? | Flowchart, or a decision table if clearer |
+| What does the customer do, including interruptions? | Unscored flowchart |
+
+**Text is 20px.** The themes set 20px text so a diagram stays readable on a
+tablet without zooming.
+
+**Two colours, each with a meaning.** Blue marks a decision and teal marks a
+result. Everything else stays neutral grey, and each outcome is also named in
+words, so colour is never the only cue.
+
+**Labels sit on an opaque background.** Branch labels get a solid background
+and a halo in the page colour, so a connector never runs through the text.
+
+**Themes need a real renderer.** Markdown hosts such as GitHub use their own
+Mermaid theme and ignore these files. Where appearance matters, the skill
+shares verified images.
+
+## What's where
+
+| Path | Owns |
+| --- | --- |
+| `SKILL.md` | The rules the agent follows: view choice, appearance, presentation, render and verify |
+| `assets/light.json`, `assets/dark.json` | Mermaid CLI configuration for each theme |
+| `checks/*.mmd` | Five example diagrams about a fictional online shop, one per view, used to check a theme or renderer change |
+| `CHANGELOG.md` | What changed in each release |
+| `.github/workflows/notify-claude-2.yml` | After a merge to `main`, tells the owner's private config repo to update its pinned copy. It needs a secret that forks do not have. |
+
+## How to run and verify it
+
+You need [Mermaid CLI](https://github.com/mermaid-js/mermaid-cli) and Node.js.
+The themes are tested with Mermaid CLI 11.16.0. No fonts are bundled: Geist is
+used when installed, otherwise Arial.
+
+Render every example in both themes from the repository root:
 
 ```sh
 mermaid_output=$(mktemp -d)
 mmdc --version
 for diagram in state sequence architecture logic journey; do
   for mode in light dark; do
-    mmdc -i "checks/$diagram.mmd" -o "$mermaid_output/$diagram-$mode.svg" \
+    mmdc -q -i "checks/$diagram.mmd" -o "$mermaid_output/$diagram-$mode.svg" \
       -c "assets/$mode.json" -b transparent
   done
 done
+ls "$mermaid_output"
 ```
 
-Fixtures cover review states, clipboard success/failure, delivery architecture, conditional visual selection and an interrupted customer journey. Render without per-source colour overrides or manual SVG patches. Inspect branch labels, class fills, connectors, accessibility titles/descriptions and text at desktop and iPad sizes against matching light/dark page backgrounds. The themes use opaque label backgrounds and a text halo to clear connectors. Presentation behavior belongs to the host: verify native dimensions, theme switching and keyboard/touch viewing there.
+Output on 2026-10-03:
 
-Compare the same review request against the prior skill: check view choice, editable sources, appearance, useful controls and honest verification limits. Include a nearby non-trigger such as a punctuation correction; it should not produce a diagram. Record inspected outputs, renderer version and limitations in the task’s GitHub record. These checks do not guarantee every host or model behaves identically.
+```text
+11.16.0
+architecture-dark.svg
+architecture-light.svg
+journey-dark.svg
+journey-light.svg
+logic-dark.svg
+logic-light.svg
+sequence-dark.svg
+sequence-light.svg
+state-dark.svg
+state-light.svg
+```
+
+Ten files mean every example parsed and rendered. They do not prove the
+diagrams look right. Open each one on a page of the matching background
+colour. Check the branch labels, the blue and teal fills, the subgraph borders
+and the text at desktop and tablet widths.
+
+To install the skill for Claude Code, clone it into a folder named after the
+skill, then start a new session:
+
+```sh
+git clone https://github.com/asabirov/mermaid-diagrams-skill ~/.claude/skills/mermaid-diagrams
+```
+
+Other agents that read `SKILL.md` folders work the same way. Ask for a diagram,
+for example "Show the states an order goes through, including
+refunds." The agent should choose a state diagram and render both themes.
+
+To check a change to `SKILL.md`, give the same review request to the old and
+the new version. Compare the view chosen, the source files kept, the
+appearance and how honestly each states what it did not verify. Also send a
+nearby request that should not produce a diagram, such as a punctuation fix.
+
+The version is `metadata.version` in `SKILL.md`. Changes are listed in
+[CHANGELOG.md](CHANGELOG.md).
+
+## Licence
+
+[MIT](LICENSE), © 2026 Artur Sabirov.

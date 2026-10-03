@@ -1,13 +1,12 @@
 flowchart TB
-accTitle: Reviewing a plan on iPad
-accDescr: Open the review, read its context, inspect relevant evidence, choose an approach and copy feedback. Resume later if interrupted.
-Open[Open review on iPad] --> Read[Read context]
-Read --> Inspect[Inspect evidence]
-Inspect --> Choose[Choose and explain]
-Choose --> Copy[Copy feedback]
-Choose -->|interrupted| Pause[Keep local draft]
-Pause -->|same browser| Choose
-Copy --> Return[Paste into conversation]
+accTitle: Returning an item
+accDescr: The customer finds the order, chooses the item, prints a return label, drops off the parcel and receives the refund. If interrupted before printing, the return is saved and the customer resumes from an email link.
+Find[Find the order] --> Choose[Choose item and reason]
+Choose --> Label[Print return label]
+Choose -->|interrupted| Saved[Return saved]
+Saved -->|email link| Choose
+Label --> Drop[Drop off parcel]
+Drop --> Refund[Refund received]
 
 class Choose decision
-class Return result
+class Refund result
