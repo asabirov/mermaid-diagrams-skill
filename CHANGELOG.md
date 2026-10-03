@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+- **Subgraphs are readable.** Subgraphs sit on the page background inside a thin border in both themes, so the nodes inside them stay visible.
+
+- **Examples about a fictional online shop.** The five check diagrams cover an order lifecycle, card payment, shop architecture, a refund decision and an item return.
+
+- **Tested version stated in the skill.** The skill names Mermaid CLI 11.16.0 as the tested renderer instead of pointing to the README.
+
 ## 0.1.0 — 2026-09-29
 
 Mermaid diagrams helps you get a readable diagram for architecture, states, conditional logic, interactions or a customer journey that a person needs to review.

@@ -35,7 +35,7 @@ When a larger view helps, make the diagram itself open it by tap, click or keybo
 
 ## Render and verify
 
-Requires Mermaid CLI (`mmdc`) with Node.js and the browser it drives, or another renderer. Use what is already installed. [README.md](README.md) has the example commands and the tested version.
+Requires Mermaid CLI (`mmdc`) with Node.js and the browser it drives, or another renderer. Use what is already installed. The themes are tested with Mermaid CLI 11.16.0; record the version you used.
 
 ```sh
 mmdc -i /path/to/diagram.mmd -o /path/to/diagram-light.svg -c /path/to/mermaid-diagrams/assets/light.json -b transparent

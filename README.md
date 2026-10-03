@@ -61,15 +61,42 @@ shares verified images.
 | `assets/light.json`, `assets/dark.json` | Mermaid CLI configuration for each theme |
 | `checks/*.mmd` | Five example diagrams about a fictional online shop, one per view, used to check a theme or renderer change |
 | `CHANGELOG.md` | What changed in each release |
-| `.github/workflows/notify-claude-2.yml` | After a merge to `main`, tells the owner's private config repo to update its pinned copy. It needs a secret that forks do not have. |
 
 ## How to run and verify it
 
-You need [Mermaid CLI](https://github.com/mermaid-js/mermaid-cli) and Node.js.
-The themes are tested with Mermaid CLI 11.16.0. No fonts are bundled: Geist is
-used when installed, otherwise Arial.
+Install the latest release for Claude Code and Codex with the
+[skills CLI](https://github.com/vercel-labs/skills):
 
-Render every example in both themes from the repository root:
+```sh
+DO_NOT_TRACK=1 npx skills add https://github.com/asabirov/mermaid-diagrams-skill/tree/v0.1.0 --skill mermaid-diagrams --agent claude-code codex --global
+```
+
+`DO_NOT_TRACK=1` turns off the CLI's telemetry. To update or roll back, run
+the same command with the release tag you want.
+
+Dependencies:
+
+| Dependency | Needed for |
+| --- | --- |
+| Node.js, npm and Git | Running the install command, and running Mermaid CLI |
+| Claude Code or Codex | Running the skill |
+| [Mermaid CLI](https://github.com/mermaid-js/mermaid-cli) (`@mermaid-js/mermaid-cli`, tested with 11.16.0) | Rendering diagrams to SVG with the light and dark themes. Without it the agent can write diagrams but cannot render or check them |
+| The headless Chrome that Mermaid CLI downloads on install | Mermaid CLI draws each diagram in it |
+| Geist font (optional) | Diagram text. Arial is used when Geist is not installed |
+
+Install Mermaid CLI with:
+
+```sh
+npm install -g @mermaid-js/mermaid-cli@11.16.0
+```
+
+Then start a new agent session and ask for a diagram, for example "Show the
+states an order goes through, including refunds." The agent should choose a
+state diagram and render both themes.
+
+### Check a theme or renderer change
+
+From a checkout of this repository, render every example in both themes:
 
 ```sh
 mermaid_output=$(mktemp -d)
@@ -104,24 +131,12 @@ diagrams look right. Open each one on a page of the matching background
 colour. Check the branch labels, the blue and teal fills, the subgraph borders
 and the text at desktop and tablet widths.
 
-To install the skill for Claude Code, clone it into a folder named after the
-skill, then start a new session:
-
-```sh
-git clone https://github.com/asabirov/mermaid-diagrams-skill ~/.claude/skills/mermaid-diagrams
-```
-
-Other agents that read `SKILL.md` folders work the same way. Ask for a diagram,
-for example "Show the states an order goes through, including
-refunds." The agent should choose a state diagram and render both themes.
-
 To check a change to `SKILL.md`, give the same review request to the old and
 the new version. Compare the view chosen, the source files kept, the
 appearance and how honestly each states what it did not verify. Also send a
 nearby request that should not produce a diagram, such as a punctuation fix.
 
-The version is `metadata.version` in `SKILL.md`. Changes are listed in
-[CHANGELOG.md](CHANGELOG.md).
+Changes are listed in [CHANGELOG.md](CHANGELOG.md).
 
 ## Licence
 
