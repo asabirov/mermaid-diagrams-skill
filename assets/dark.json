@@ -19,6 +19,8 @@
     "lineColor": "#a1a1a1",
     "textColor": "#ededed",
     "edgeLabelBackground": "#0a0a0a",
+    "clusterBkg": "#0a0a0a",
+    "clusterBorder": "#3a3a3a",
     "actorBkg": "#10243e",
     "actorBorder": "#10243e",
     "actorTextColor": "#ededed",

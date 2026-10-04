@@ -1,13 +1,11 @@
 flowchart TB
-accTitle: Choosing evidence for a review
-accDescr: Choose a diagram for logic, matched screenshots for appearance, or a disposable prototype for interaction.
-Question[What needs review?] --> Logic{Logic?}
-Logic -->|Yes| Diagram[Diagram]
-Logic -->|Otherwise| Visual{Appearance?}
-Visual -->|Yes| Screens[Matched screenshots]
-Visual -->|Otherwise| Interaction{Interaction?}
-Interaction -->|Yes| Prototype[Disposable prototype]
-Interaction -->|Otherwise| Prose((Short explanation))
+accTitle: Deciding a refund
+accDescr: Returns within 30 days of unused items get a full refund. Used items within 30 days get store credit. Returns after 30 days are declined.
+Request[Return request] --> Window{Within 30 days?}
+Window -->|Yes| Condition{Item unused?}
+Window -->|No| Decline((Decline))
+Condition -->|Yes| Full[Full refund]
+Condition -->|No| Credit[Store credit]
 
-class Logic,Visual,Interaction decision
-class Diagram,Screens,Prototype,Prose result
+class Window,Condition decision
+class Full,Credit,Decline result

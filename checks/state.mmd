@@ -1,12 +1,15 @@
 stateDiagram-v2
-accTitle: Review choice lifecycle
-accDescr: Editing creates a draft. Returning feedback records a response. A material revision requires another review.
-[*] --> Unreviewed
-Unreviewed --> Draft: choose or comment
-Draft --> Returned: return feedback
-Returned --> NeedsReview: material change
-NeedsReview --> Draft: review again
-Returned --> [*]: decision recorded
+accTitle: Order lifecycle
+accDescr: A placed order is paid, shipped and delivered. It can be cancelled before payment and refunded after payment.
+[*] --> Placed
+Placed --> Paid: payment approved
+Placed --> Cancelled: customer cancels
+Paid --> Shipped: parcel handed to courier
+Paid --> Refunded: refund issued
+Shipped --> Delivered: courier confirms
+Delivered --> [*]
+Cancelled --> [*]
+Refunded --> [*]
 
-class Draft decision
-class Returned result
+class Paid decision
+class Delivered result
