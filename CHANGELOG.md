@@ -8,7 +8,8 @@
 
 ### Fixed
 
-- **Dark edge labels.** You see full descenders without a visible label box on a matching dark page, while connectors stay behind the text.
+- **Dark edge labels.** You see full letters, and the label background hides connectors and can match the dark page colour.
+  Action: For another dark page colour, match the page, subgraph, and label backgrounds in a theme copy.
 
 ## 0.2.0 — 2026-10-04
 
