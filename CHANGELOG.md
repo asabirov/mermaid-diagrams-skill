@@ -8,6 +8,8 @@
 
 - **Async arrow tokens.** The agent identifies solid and dotted async arrows and labels mixed sync and async messages for you.
 
+- **Mixed sequence arrows.** You can tell dotted replies from dotted async messages by their text or a legend.
+
 ### Fixed
 
 - **Edge label spacing.** You see even space around flowchart and state labels in both themes.
