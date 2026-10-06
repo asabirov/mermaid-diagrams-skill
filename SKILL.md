@@ -19,7 +19,7 @@ Each diagram answers one question at a readable size. Keep the editable `.mmd` s
 | Which conditions lead to which outcomes? | Flowchart, or a decision table if clearer |
 | What does the customer do, including interruptions? | Unscored flowchart; native journey only with supplied scores |
 
-Label conditions. For alternative diagrams, reuse node IDs for the same steps. Say whether the diagram shows proposed or observed behavior, and what is uncertain. Skip captions that repeat the diagram. Never invent journey scores, and never treat a timeout as proof that work stopped.
+Label conditions and meaningful transitions. For alternative diagrams, reuse node IDs for the same steps. Say briefly whether the diagram shows proposed or observed behavior, and what is uncertain. Skip captions that repeat the diagram. Never invent journey scores, and never treat a timeout as proof that work stopped.
 
 ## Appearance
 
@@ -27,7 +27,7 @@ Use [assets/light.json](assets/light.json) and [assets/dark.json](assets/dark.js
 
 Use soft fills without decorative node outlines. Branch labels need an opaque background and space around them so connectors do not cross the text; check both themes. Around a diagram, avoid numbered sections, repeated metadata, divider lines, nested borders and collapsible blocks.
 
-Use solid links by default. Use non-solid links only for needed distinctions, such as optional steps. State each meaning in edge labels first, otherwise use captions or legends. Flowcharts use solid `-->` and dotted `-.->`. Keep sequence `-->>` replies and async arrows. Never add dotted or dashed decoration.
+Default to solid links. Non-solid links must mark needed distinctions, including optional steps. Explain each meaning in edge labels. Otherwise, use captions or legends. Flowcharts use solid `-->` and dotted `-.->`. Keep sequence `-->>` replies and async arrows. Never add dotted or dashed decoration.
 
 ## Review presentation
 
