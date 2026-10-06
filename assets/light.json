@@ -47,5 +47,5 @@
     "mirrorActors": false,
     "wrap": true
   },
-  "themeCSS": ".decision rect,.decision polygon,.decision path,.decision circle,.decision ellipse{fill:#edf5ff!important;stroke:none!important} .result rect,.result polygon,.result path,.result circle,.result ellipse{fill:#e9f7f3!important;stroke:none!important} .edgeLabel rect{fill:#ffffff!important;opacity:1!important} .edgeLabel text{paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}"
+  "themeCSS": ".decision rect,.decision polygon,.decision path,.decision circle,.decision ellipse{fill:#edf5ff!important;stroke:none!important} .result rect,.result polygon,.result path,.result circle,.result ellipse{fill:#e9f7f3!important;stroke:none!important} .edgeLabel rect{fill:#ffffff!important;opacity:1!important;stroke:#ffffff!important;stroke-width:8px} .messageText,.loopText,.loopText>tspan,.sectionTitle,.sectionTitle>tspan{paint-order:stroke;stroke:#ffffff!important;stroke-width:6px;stroke-linejoin:round}"
 }
