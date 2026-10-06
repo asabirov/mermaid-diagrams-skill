@@ -31,18 +31,16 @@ What it turned down:
 
 ## The design
 
-The skill picks the view by the question the diagram answers; the table is in
-[SKILL.md](SKILL.md).
+The skill picks the view by the question the diagram answers. The view table
+and appearance rules are in [SKILL.md](SKILL.md).
 
-**Text is 20px.** The themes set 20px text so a diagram stays readable on a
-tablet without zooming.
+**Readable text.** The themes set the text size for reading on a tablet.
 
-**Two colours, each with a meaning.** Blue marks a decision and teal marks a
-result. Everything else stays neutral grey, and each outcome is also named in
-words, so colour is never the only cue.
+**Colour carries meaning.** The themes give decisions and results distinct
+colours. Outcome names also make the meaning clear without colour.
 
-**Labels sit on an opaque background.** Branch labels get a solid background
-and a halo in the page colour, so a connector never runs through the text.
+**Branch labels stay legible.** Their background keeps connectors from running
+through the text.
 
 **Themes need a real renderer.** Markdown hosts such as GitHub use their own
 Mermaid theme and ignore these files. Where appearance matters, the skill
@@ -56,6 +54,9 @@ shares verified images.
 | `assets/light.json`, `assets/dark.json` | Mermaid CLI configuration for each theme |
 | `checks/*.mmd` | Five example diagrams about a fictional online shop, one per view, used to check a theme or renderer change |
 | `CHANGELOG.md` | What changed in each release |
+
+The skill version is recorded in `metadata.version` in [SKILL.md](SKILL.md).
+[CHANGELOG.md](CHANGELOG.md) records the changes for each version.
 
 ## How to run and verify it
 
@@ -131,8 +132,6 @@ To check a change to `SKILL.md`, give the same review request to the old and
 the new version. Compare the view chosen, the source files kept, the
 appearance and how honestly each states what it did not verify. Also send a
 nearby request that should not produce a diagram, such as a punctuation fix.
-
-Changes are listed in [CHANGELOG.md](CHANGELOG.md).
 
 ## Licence
 
