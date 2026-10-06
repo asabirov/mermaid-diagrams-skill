@@ -10,9 +10,9 @@
 
 ### Fixed
 
-- **Flowchart label spacing.** You see even space around labels in both themes.
+- **Edge label spacing.** You see even space around flowchart and state labels in both themes.
 
-- **Sequence message labels.** You can read message text where it crosses lifelines.
+- **Sequence labels.** You can read message and condition labels where they cross lifelines.
 
 - **Dark edge labels.** You see full letters and hidden connectors on #0a0a0a, and matching theme copies blend labels into other dark pages.
 
