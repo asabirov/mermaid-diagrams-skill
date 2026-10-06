@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1 — Unreleased
+
+### Changed
+
+- **Link styles.** The agent uses solid links by default and explains any non-solid link that marks a needed distinction.
+
 ## 0.2.0 — 2026-10-04
 
 ### Changed
