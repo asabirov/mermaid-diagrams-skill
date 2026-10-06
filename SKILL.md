@@ -2,7 +2,7 @@
 name: mermaid-diagrams
 description: Use when preparing Mermaid diagrams for architecture, states, conditional logic, interactions, or customer journeys that a human needs to review. Not for screenshots, UI prototypes, or simple facts clearer in prose.
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # Mermaid diagrams
@@ -26,6 +26,8 @@ Label conditions and meaningful transitions. When you offer alternative diagrams
 Use [assets/light.json](assets/light.json) and [assets/dark.json](assets/dark.json). Both use 20px Geist or Arial text, quiet surfaces and neutral connectors. Subgraphs sit on the page background inside a thin border. Colour carries meaning: blue for `decision`, teal for `result`; other nodes stay neutral. Assign classes with `class NODE_ID decision` or `class NODE_ID result`. Sequence participants use blue surfaces. Keep colours in the theme files, not in `classDef` lines. Name each outcome in words; colour alone is not enough.
 
 Use soft fills without decorative node outlines. Branch labels need an opaque background and space around them so connectors do not cross the text; check both themes. Around a diagram, avoid numbered sections, repeated metadata, divider lines, nested borders and collapsible blocks.
+
+In flowcharts, use solid links (`-->`) by default. Use dashed links (`-.->`) only for a needed distinction, such as an optional step. Explain it in the caption or legend. Never use dotted or dashed lines for decoration.
 
 ## Review presentation
 
