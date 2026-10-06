@@ -27,7 +27,7 @@ Use [assets/light.json](assets/light.json) and [assets/dark.json](assets/dark.js
 
 Use soft fills without decorative node outlines. Branch labels need an opaque background and space around them so connectors do not cross the text; check both themes. Around a diagram, avoid numbered sections, repeated metadata, divider lines, nested borders and collapsible blocks.
 
-Default to solid links. Non-solid links must mark needed distinctions, including optional steps. Explain each meaning in edge labels. Otherwise, use captions or legends. Flowcharts use solid `-->` and dotted `-.->`. Keep sequence `-->>` replies and async arrows. Never add dotted or dashed decoration.
+Default to solid links. Non-solid links must mark needed distinctions, including optional steps. Explain each meaning in edge labels. Otherwise, use captions or legends. Flowcharts use solid `-->` and dotted `-.->`. Keep sequence `-->>` replies and async `-)` and `--)` arrows. Never add dotted or dashed decoration.
 
 ## Review presentation
 

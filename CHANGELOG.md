@@ -6,6 +6,8 @@
 
 - **Link styles.** The agent uses solid links by default and explains any non-solid link that marks a needed distinction.
 
+- **Async arrow tokens.** The skill names both async arrow forms so the agent keeps them when it chooses link styles.
+
 ### Fixed
 
 - **Dark edge labels.** You see full letters and hidden connectors on #0a0a0a, and matching theme copies blend labels into other dark pages.
