@@ -45,4 +45,4 @@ mmdc -i /path/to/diagram.mmd -o /path/to/diagram-light.svg -c /path/to/mermaid-d
 
 Render the dark version with `dark.json`. Include `accTitle` and `accDescr`, and give the image useful alt text where it is shown. Look at both themes at the intended desktop and tablet sizes for clipped text, overlaps, labels crossing connectors and weak contrast. Test any viewer by touch, click and keyboard. Keep the renderer version and the evidence with the task. A diagram that parses has not been checked visually; mark unrendered work as unverified. Markdown hosts such as GitHub ignore these themes, so use verified images when appearance matters.
 
-If the dark page has another background, copy `dark.json`. Set `themeVariables.background`, `themeVariables.clusterBkg`, `themeVariables.edgeLabelBackground`, and the `.edgeLabel rect` fill to the page colour.
+`dark.json` defaults to page colour `#0a0a0a`, and you keep other dark copies with the task, outside the skill folder. If the page differs, set `themeVariables.clusterBkg` and the `.edgeLabel rect` fill in `themeCSS` to its colour.

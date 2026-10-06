@@ -8,8 +8,7 @@
 
 ### Fixed
 
-- **Dark edge labels.** You see full letters, and the label background hides connectors and can match the dark page colour.
-  Action: For another dark page colour, match the page, subgraph, and label backgrounds in a theme copy.
+- **Dark edge labels.** You see full letters and hidden connectors on #0a0a0a, and matching theme copies blend labels into other dark pages.
 
 ## 0.2.0 — 2026-10-04
 
