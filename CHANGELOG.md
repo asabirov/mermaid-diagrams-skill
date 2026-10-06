@@ -1,14 +1,12 @@
 # Changelog
 
-## 0.2.1 — Unreleased
+## 0.2.1 — 2026-10-06
 
 ### Changed
 
-- **Link styles.** The agent uses solid links by default and explains any non-solid link that marks a needed distinction.
+- **Link styles.** The agent uses solid links by default, explains needed non-solid links, and identifies solid and dotted async arrows.
 
-- **Async arrow tokens.** The agent identifies solid and dotted async arrows and labels mixed sync and async messages for you.
-
-- **Mixed sequence arrows.** You can tell dotted replies from dotted async messages by their text or a legend.
+- **Sequence arrows.** The agent labels mixed sync, reply, and async messages in text or a legend so you can distinguish dotted replies from dotted async messages.
 
 ### Fixed
 
