@@ -34,8 +34,6 @@ What it turned down:
 The skill picks the view by the question the diagram answers. The view table
 and appearance rules are in [SKILL.md](SKILL.md).
 
-**Readable text.** The themes set the text size for reading on a tablet.
-
 **Colour carries meaning.** The themes give decisions and results distinct
 colours. Outcome names also make the meaning clear without colour.
 
