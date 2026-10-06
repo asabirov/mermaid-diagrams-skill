@@ -6,6 +6,10 @@
 
 - **Link styles.** The agent uses solid links by default and explains any non-solid link that marks a needed distinction.
 
+### Fixed
+
+- **Dark edge labels.** You see full descenders without a visible label box on a matching dark page, while connectors stay behind the text.
+
 ## 0.2.0 — 2026-10-04
 
 ### Changed
