@@ -6,7 +6,7 @@
 
 - **Link styles.** The agent uses solid links by default and explains any non-solid link that marks a needed distinction.
 
-- **Async arrow tokens.** The skill names both async arrow forms so the agent keeps them when it chooses link styles.
+- **Async arrow tokens.** The agent identifies solid and dotted async arrows and labels mixed sync and async messages for you.
 
 ### Fixed
 
